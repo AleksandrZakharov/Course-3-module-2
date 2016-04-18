@@ -104,7 +104,7 @@ class Place
 
   def self.near (point, max_meters=nil)
 
-    
+    Place.collection.find({"geometry.geolocation" => {:$near => { :$geometry => point.to_hash, :$maxDistance => max_meters}}})
 
   end
 
