@@ -113,4 +113,12 @@ class Place
 
   end
 
+  def photos (offset = 0,limit = nil)
+
+    result = Photo.find_photos_for_place(@id).skip(offset)
+    result = result.limit(limit) if !limit.nil?
+    return result.to_a
+
+  end
+
 end

@@ -9,16 +9,18 @@ class Point
 
 	def initialize (params)
 
-		coord = {}
+		
 		if params[:lat]
 			@longitude=params[:lng]
 	      	@latitude=params[:lat]
-		else
+	    end
+		if params[:coordinates]
 	      	@longitude=params[:coordinates][0]
 	      	@latitude=params[:coordinates][1]
+	    end
 
     end
 
-	end
+	
 
 end
