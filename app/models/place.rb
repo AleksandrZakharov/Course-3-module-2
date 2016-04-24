@@ -1,5 +1,7 @@
 class Place
 
+  include ActiveModel::Model
+
   attr_accessor :id, :formatted_address, :location, :address_components
 
   def initialize(params)
@@ -21,6 +23,12 @@ class Place
   def self.collection
 
   	@coll = self.mongo_client['places']
+
+  end
+
+  def persisted?
+
+    !@id.nil?
 
   end
 
