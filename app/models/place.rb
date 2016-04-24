@@ -115,9 +115,11 @@ class Place
 
   def photos (offset = 0,limit = nil)
 
-    result = Photo.find_photos_for_place(@id).skip(offset)
-    result = result.limit(limit) if !limit.nil?
-    return result.to_a
+    result = []
+    temp = Photo.find_photos_for_place(@id).skip(offset)
+    temp = result.limit(limit) if !limit.nil?
+    temp.each {|doc| result << Photo.find(doc[:_id])}
+    return result
 
   end
 
